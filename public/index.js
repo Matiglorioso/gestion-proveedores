@@ -5,30 +5,38 @@ import {
     eliminarProveedor
   } from './functions.js';
   
-  function mostrarNotificacion(titulo, mensaje, aceptar = null, cancelar = null) {
+  function mostrarNotificacion(titulo, mensaje, aceptar = null, cancelar = null, mostrarCancelar = true) {
     const modalElement = document.getElementById('modalNotificacion');
     document.getElementById('modalNotificacionTitulo').textContent = titulo;
     document.getElementById('modalNotificacionMensaje').textContent = mensaje;
-  
+
     const modal = new bootstrap.Modal(modalElement);
     const botonAceptar = modalElement.querySelector('.btn-aceptar');
     const botonCancelar = modalElement.querySelector('.btn-cancelar');
-  
+
+    //Ocultar correctamente el botón "Cancelar"
+    if (mostrarCancelar) {
+        botonCancelar.style.display = "inline-block";
+    } else {
+        botonCancelar.style.display = "none";
+    }
+
     botonAceptar.replaceWith(botonAceptar.cloneNode(true));
     botonCancelar.replaceWith(botonCancelar.cloneNode(true));
-  
+
     modalElement.querySelector('.btn-aceptar').onclick = () => {
-      modal.hide();
-      if (aceptar) aceptar();
+        modal.hide();
+        if (aceptar) aceptar();
     };
-  
+
     modalElement.querySelector('.btn-cancelar').onclick = () => {
-      modal.hide();
-      if (cancelar) cancelar();
+        modal.hide();
+        if (cancelar) cancelar();
     };
-  
+
     modal.show();
-  }
+}
+
   
   async function cargarProv() {
     const spinner = document.getElementById('spinner');
@@ -69,7 +77,7 @@ import {
             async () => {
               try {
                 await eliminarProveedor(prov.id);
-                mostrarNotificacion("ACCIÓN COMPLETADA", "Proveedor eliminado correctamente.");
+                mostrarNotificacion("ACCIÓN COMPLETADA", "Proveedor eliminado correctamente.", null, null, false);
                 await cargarProv();
               } catch (error) {
                 mostrarNotificacion("Error", error.message);
@@ -103,7 +111,7 @@ import {
   
     try {
       await agregarProveedor({ nombre, telefono, email });
-      mostrarNotificacion("ACCIÓN COMPLETADA", "Proveedor agregado correctamente.");
+      mostrarNotificacion("ACCIÓN COMPLETADA", "Proveedor agregado correctamente.", null, null, false);
       e.target.reset();
       bootstrap.Modal.getInstance(document.getElementById("modalCrearProveedor")).hide();
       await cargarProv();
@@ -129,7 +137,7 @@ import {
   
     try {
       await editarProveedor(id, { nombre, telefono, email });
-      mostrarNotificacion("ACCIÓN COMPLETADA", "Proveedor actualizado correctamente.");
+      mostrarNotificacion("ACCIÓN COMPLETADA", "Proveedor actualizado correctamente.", null, null, false);
       e.target.reset();
       bootstrap.Modal.getInstance(document.getElementById("modalEditarProveedor")).hide();
       await cargarProv();
