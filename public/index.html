@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" type="module" defer></script>
+    <title>Gestión de Proveedores</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Gestión de Proveedores</h1>
+
+        <button class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#modalCrearProveedor">
+            <i class="fas fa-plus"></i> Agregar Proveedor
+        </button>
+        
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="filtroProveedores" placeholder="Buscar proveedor por ID o nombre">
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre y Apellido</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="proveedoresContainer">
+                    <!-- Aquí se cargarán los proveedores dinámicamente -->
+                </tbody>
+            </table>
+            <div class="spinner-border text-primary d-none" id="spinner"></div>
+        </div>
+    </div>
+    
+<!-- Modal Notificaciones -->
+    <div class="modal fade" id="modalNotificacion" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalNotificacionTitulo">Notificación</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modalNotificacionMensaje">            
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-cancelar">Cancelar</button>
+            <button type="button" class="btn btn-primary btn-aceptar">Aceptar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+  
+    <!-- Modal Crear Proveedor -->
+    <div class="modal fade" id="modalCrearProveedor" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Proveedor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="proveedorForm">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre y Apellido</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="telefono" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" form="proveedorForm">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Proveedor -->
+    <div class="modal fade" id="modalEditarProveedor" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Proveedor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="proveedorEditarForm">
+                        <div class="mb-3">
+                            <label for="nombreEditar" class="form-label">Nombre y Apellido</label>
+                            <input type="text" class="form-control" id="nombreEditar" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefonoEditar" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="telefonoEditar" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailEditar" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailEditar" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" form="proveedorEditarForm">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

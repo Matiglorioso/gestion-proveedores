@@ -1,0 +1,87 @@
+/* Aseguramos que la altura total se use de manera eficiente */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#page-content-wrapper {
+    margin-left: 250px; /* Se ajusta para no superponerse con el sidebar */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alineamos el contenido hacia arriba */
+    padding: 20px;
+    height: 100vh;
+}
+
+.table-responsive {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Ajustes específicos para la tabla de proveedores */
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+
+/* Botones de acciones */
+.btn {
+    min-width: 100px;
+    margin: 5px;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+/* Ajuste de modal */
+.modal-content {
+    padding: 20px;
+}
+
+h1 {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.btn-success {
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+  
+.btn-success:hover {
+    background-color: #28a745;
+}
+table.table-striped tbody tr:hover {
+    background-color: #f1f7fd;
+    cursor: pointer;
+}
+.modal-dialog {
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: translateY(0);
+}
+#filtroProveedores {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+#filtroProveedores:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+}
+
+      
