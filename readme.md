@@ -80,30 +80,7 @@ http://localhost:3000
 | PUT         | `/api/proveedores/:id` | Actualizar datos del proveedor   |
 | DELETE      | `/api/proveedores/:id` | Eliminar un proveedor existente  |
 
-## 📂 Estructura del proyecto
 
-```
-FinalAW2-Aliaga/
-├── conexiones/
-│   ├── crearBD.mjs
-│   └── db.mjs
-├── controladores/
-│   └── proveedoresController.mjs
-├── models/
-│   └── proveedoresModel.mjs
-├── public/
-│   ├── index.html
-│   ├── index.css
-│   ├── index.js
-│   └── functions.js
-├── routes/
-│   ├── proveedores.mjs
-│   └── proveedoresFront.mjs
-├── app.mjs
-├── .env
-├── package.json
-└── package-lock.json
-```
 
 ## 📚 Recomendaciones adicionales
 - Verifica siempre que PostgreSQL esté corriendo correctamente.
@@ -111,7 +88,7 @@ FinalAW2-Aliaga/
 
 ## 🎓 Autor
 
-**Tu Nombre Completo**
+**Matias Aliaga**
 
-📧 **tuemail@example.com**
+📧 **matiasaliaga1918@hotmail.com**
 

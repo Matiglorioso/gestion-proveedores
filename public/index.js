@@ -77,7 +77,7 @@ import {
             async () => {
               try {
                 await eliminarProveedor(prov.id);
-                mostrarNotificacion("ACCIÓN COMPLETADA", "Proveedor eliminado correctamente.", null, null, false);
+                mostrarNotificacion("Éxito", "Proveedor eliminado correctamente.", null, null, false);
                 await cargarProv();
               } catch (error) {
                 mostrarNotificacion("Error", error.message);
@@ -111,7 +111,7 @@ import {
   
     try {
       await agregarProveedor({ nombre, telefono, email });
-      mostrarNotificacion("ACCIÓN COMPLETADA", "Proveedor agregado correctamente.", null, null, false);
+      mostrarNotificacion("Éxito", "Proveedor agregado correctamente.", null, null, false);
       e.target.reset();
       bootstrap.Modal.getInstance(document.getElementById("modalCrearProveedor")).hide();
       await cargarProv();
@@ -137,7 +137,7 @@ import {
   
     try {
       await editarProveedor(id, { nombre, telefono, email });
-      mostrarNotificacion("ACCIÓN COMPLETADA", "Proveedor actualizado correctamente.", null, null, false);
+      mostrarNotificacion("Éxito", "Proveedor actualizado correctamente.", null, null, false);
       e.target.reset();
       bootstrap.Modal.getInstance(document.getElementById("modalEditarProveedor")).hide();
       await cargarProv();
