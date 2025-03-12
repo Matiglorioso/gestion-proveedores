@@ -24,22 +24,34 @@ Instala las dependencias necesarias:
 npm install express cors pg dotenv
 ```
 
+## 🗃️ Instalación de PostgreSQL en Windows
+
+1. Descarga PostgreSQL desde [postgresql.org](https://www.postgresql.org/download/windows/).
+2. Instala PostgreSQL y asegúrate de recordar el usuario y la contraseña que configures.
+3. Abre **pgAdmin** o usa la terminal `psql` para conectarte a PostgreSQL.
+4. Verifica que PostgreSQL esté corriendo usando:
+   ```bash
+   net start postgresql
+   ```
+
 ## 🗃️ Configuración de la base de datos
 
-**Crea la base de datos en PostgreSQL:**
+### **Crear la base de datos**
+
+Abre `psql` y ejecuta:
 
 ```sql
-CREATE DATABASE nombre_base;
+CREATE DATABASE proveedores_db;
 ```
 
-**Crea la tabla proveedores:**
+### **Crear la tabla de proveedores**
 
 ```sql
-CREATE TABLE proveedores (
+CREATE TABLE IF NOT EXISTS proveedores (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     telefono VARCHAR(20) NOT NULL,
-    email VARCHAR(100) NOT NULL
+    email VARCHAR(100) NOT NULL UNIQUE
 );
 ```
 
@@ -49,9 +61,9 @@ Crea un archivo `.env` con tus datos de conexión:
 
 ```env
 DB_USER=tu_usuario
+DB_PASSWORD=tu_contraseña
 DB_HOST=localhost
-DB_NAME=tu_basedatos
-DB_PASSWORD=tu_password
+DB_NAME=proveedores_db
 DB_PORT=5432
 PORT=3000
 ```
@@ -80,8 +92,6 @@ http://localhost:3000
 | PUT         | `/api/proveedores/:id` | Actualizar datos del proveedor   |
 | DELETE      | `/api/proveedores/:id` | Eliminar un proveedor existente  |
 
-
-
 ## 📚 Recomendaciones adicionales
 - Verifica siempre que PostgreSQL esté corriendo correctamente.
 - Prueba los endpoints con Postman para verificar que todo funcione antes de entregar.
@@ -91,4 +101,3 @@ http://localhost:3000
 **Matias Aliaga**
 
 📧 **matiasaliaga1918@hotmail.com**
-
